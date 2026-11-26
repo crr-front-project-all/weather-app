@@ -4,56 +4,107 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    font-family: 'Spoqa Han Sans Neo', sans-serif;
 }
 
-.app {
+/* 1) 배경: 날씨별 그라데이션(bgColor.js)이 들어오는 자리 */
+section {
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-items: center;
+    padding: 40px 16px;
+    transition: background .4s ease;
 }
 
-.container {
-    width: 600px;
-    background-color: #ffffff2f;
-    padding: 20px;
-    box-shadow: inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff;
-    border-radius: 20px;
-    transition: box-shadow 3s;
-      border: 2px solid rgb(206, 206, 206);
+/* 2) 유리 카드 */
+.app {
+    width: 100%;
+    max-width: 420px;
+    padding: 28px 24px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, .55);
+    border: 1px solid rgba(255, 255, 255, .7);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 20px 40px rgba(30, 60, 120, .25);
+    color: #1e293b;
 }
-.container:hover 
-{
-     box-shadow: inset 2px 2px 5px #bcbcbc, inset -2px -2px 5px #ffffff27, 2px 2px 5px #bcbcbc, -2px -2px 5px #ffffff;
-}
+
 h1 {
-    font-size: 28px;
+    font-size: 18px;
+    font-weight: 500;
+    opacity: .9;
     margin-bottom: 16px;
 }
 
+/* 3) 알약 모양 검색창 */
 .input-wrap {
     display: flex;
-    gap: 10px;
+    background: rgba(255, 255, 255, .9);
+    border-radius: 999px;
+    padding: 6px;
 }
 
 .input-wrap input {
     flex: 1;
-    border: 1px solid #ddd;
-    padding: 10px 12px;
-    border-radius: 5px;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0 14px;
+    font-size: 15px;
+    color: #222;
 }
 
 .input-wrap button {
-    border-radius: 5px;
     border: none;
-    padding: 10px 14px;
-    background-color: #111;
+    border-radius: 999px;
+    padding: 10px 18px;
+    background: #1e293b;
     color: #fff;
-    font-size: 16px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform .15s;
+}
+
+.input-wrap button:hover {
+    transform: scale(1.05);
 }
 
 .input-wrap button[disabled] {
     opacity: .6;
     cursor: not-allowed;
+}
+
+/* 빠른 선택 칩 */
+.chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.chips button {
+    border: 1px solid rgba(30, 41, 59, .15);
+    background: rgba(255, 255, 255, .5);
+    color: #1e293b;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.chips button:hover {
+    background: #fff;
+}
+
+.error {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.info {
+    margin-top: 12px;
+    opacity: .85;
 }

@@ -1,33 +1,28 @@
-import React, { useMemo } from 'react'
 import './WeatherCard.css'
-const WeatherCard = ({ weather }) => {
+import { getOutfit } from '../utils/outfit'
 
+const WeatherCard = ({ weather }) => {
     if (!weather) return null
 
-
-    const { name, main, weather: weatherInfo } = weather
-    const { temp, humidity } = main || {}
-    const { description, icon } = (weatherInfo && weatherInfo[0]) || {}
-
-    console.log(name, temp, humidity, description, icon,weather)
-
-    const iconUrl = useMemo(
-        () => (icon ? `https://openweathermap.org/img/wn/${icon}@2x.png` : ""
-        ), [icon]
-    )
-
+    const { name, main, wind, weather: info } = weather
+    const { temp, feels_like, humidity } = main
+    const { description, icon } = info[0]
+    const iconUrl = `https://openweathermap.org/img/wn/${icon}@4x.png`
 
     return (
-        <div className='card'>
+        <div className="card" key={name}>
             <h2>{name}</h2>
             <div className="img-wrap">
-                {iconUrl && <img src={iconUrl} alt={description} />}
-
+                <img src={iconUrl} alt={description} />
             </div>
-            <p>{description}</p>
-            <p>🌡️ {Math.round(temp)}℃</p>
-            <p>💧 {humidity}%</p>
-
+            <p className="temp">{Math.round(temp)}°</p>
+            <p className="desc">{description}</p>
+            <p className="outfit">오늘 옷차림 · {getOutfit(Math.round(temp))}</p>
+            <div className="meta">
+                <div><span>체감</span><strong>{Math.round(feels_like)}°</strong></div>
+                <div><span>습도</span><strong>{humidity}%</strong></div>
+                <div><span>바람</span><strong>{wind.speed}m/s</strong></div>
+            </div>
         </div>
     )
 }
