@@ -1,4 +1,3 @@
-/* 4) 날씨 카드: nth-of-type 대신 클래스 이름 사용 */
 .card {
     text-align: center;
     padding: 28px 0 4px;
@@ -10,6 +9,7 @@
     font-weight: 700;
 }
 
+/* 아이콘 */
 .card .img-wrap {
     width: 140px;
     height: 140px;
@@ -21,6 +21,7 @@
     filter: drop-shadow(0 8px 16px rgba(30, 60, 120, .35));
 }
 
+/* 온도·설명 */
 .card .temp {
     font-size: 72px;
     font-weight: 300;
@@ -33,17 +34,7 @@
     opacity: .9;
 }
 
-/* 옷차림 추천 (8번) */
-.card .outfit {
-    display: inline-block;
-    margin-top: 14px;
-    padding: 6px 14px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, .75);
-    font-size: 14px;
-}
-
-/* 5) 상세 정보 3칸 */
+/* 상세 정보 3칸 */
 .meta {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -52,9 +43,9 @@
 }
 
 .meta div {
-    background: rgba(255, 255, 255, .6);
-    border-radius: 16px;
     padding: 12px 6px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .6);
 }
 
 .meta span {
@@ -68,6 +59,7 @@
     font-weight: 700;
 }
 
+/* 등장 애니메이션 */
 @keyframes fadeUp {
     from {
         opacity: 0;
